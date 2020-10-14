@@ -3,6 +3,7 @@
 	"displayName": "JumpCursorsToo",
 	"description": "Jumps all cursors to the next typed character",
 	"version": "0.0.1",
+	"repository": "https://github.com/ZmanElete/Jump-Cursors-Too",
 	"publisher": "zmanelete",
 	"engines": {
 		"vscode": "^1.50.0"
