@@ -2,7 +2,7 @@ import { ExtensionContext, window, commands, Range, Selection, TextEditorCursorS
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: ExtensionContext) {	
+export function activate(context: ExtensionContext) {
 
 	let jumpCommand = commands.registerCommand('jump-cursors-too.jumpCursorsToo', async () => {
 		const editor = window.activeTextEditor;
@@ -44,14 +44,14 @@ export function activate(context: ExtensionContext) {
 					if (!charPostition.isBefore(selection.anchor)) {
 						charPostition = document.positionAt(charIndex + character.length);
 					}
-					//create selection
-					let newSelection = new Selection(charPostition, charPostition);
 
-					// newSelection = new Selection(selection.anchor, charPostition);
-					// if (selection.active.isEqual(selection.anchor)) {
-					// 	//if nothing is selected, don't highlight anything.
-					// }
-					
+					//create selection
+					let newSelection = new Selection(selection.anchor, charPostition);
+					if (selection.active.isEqual(selection.anchor)) {
+							// if nothing is selected, don't highlight anything.
+							newSelection = new Selection(charPostition, charPostition);
+					}
+
 					//if this is not a repeat selection add selection
 					if (!newSelection.isEqual(lastSelection)) {
 						newSelections.push(newSelection);
